@@ -1,0 +1,16 @@
+# v1.0.0 - initial release
+name: Preview XSS Fix
+id: PreviewXSSFix
+key: PreviewXSSFix
+author_link: http://mt-hacks.com/
+author_name: MT Hacks
+description: Fixes an issue introduced in Google Chrome 17 (Feb 2012) that causes admin entry previews to result in blank screen.
+version: 1.0.0
+plugin_link: http://mt-hacks.com/previewxssfix.html
+
+callbacks:
+    cms_pre_preview: >
+        sub {
+            my ($cb,$app) = @_;
+            $app->set_header('X-XSS-Protection',0);
+        }
